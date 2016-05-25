@@ -14,7 +14,8 @@
 # include_recipe "sphinx"
 
 # uncomment to turn on thinking sphinx 3. See cookbooks/thinking-sphinx-3/readme.md for documentation.
-# include_recipe "thinking-sphinx-3"
+  include_recipe "thinking-sphinx-3"
+  include_recipe "timezone"
 
 # uncomment to use the collectd recipe. See cookbooks/collectd/readme.md for documentation.
 # include_recipe "collectd"
