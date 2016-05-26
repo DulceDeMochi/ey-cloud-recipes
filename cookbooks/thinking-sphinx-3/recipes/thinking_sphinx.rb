@@ -27,9 +27,9 @@ node[:sphinx][:apps].each do |app_name|
     end
 
     #symlink config yml
-    link "#{current_path}/config/thinking_sphinx.yml" do
-      to "#{shared_path}/config/thinking_sphinx.yml"
-    end
+    #link "#{current_path}/config/thinking_sphinx.yml" do
+    #  to "#{shared_path}/config/thinking_sphinx.yml"
+    #end
       
     if util_or_app_server?(node[:sphinx][:utility_name])       
       # create sphinx directory
