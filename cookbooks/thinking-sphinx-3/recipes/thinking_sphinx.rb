@@ -55,20 +55,20 @@ node[:sphinx][:apps].each do |app_name|
         action :install
         not_if "gem list | grep bundler"
       end
-    
+
       # configure thinking sphinx
-      #execute "configure sphinx" do 
-      #  command "cd #{current_path} && bundle exec rake ts:configure"
-      #  user node[:owner_name]
-      #  environment 'RAILS_ENV' => env
-      #end
-      #
-      ## index unless index already exists
-      #execute "indexing" do
-      #  command "cd #{current_path} && bundle exec rake ts:index"
-      #  user node[:owner_name]
-      #  environment 'RAILS_ENV' => env
-      #end
+      execute "configure sphinx" do 
+        command "cd #{current_path} && bundle exec rake ts:configure"
+        user node[:owner_name]
+        environment 'RAILS_ENV' => env
+      end
+
+      # index unless index already exists
+      execute "indexing" do
+        command "cd #{current_path} && bundle exec rake ts:index"
+        user node[:owner_name]
+        environment 'RAILS_ENV' => env
+      end
     end
   else
     Chef::Log.info "Thinking Sphinx was not configured because the application (#{app_name}) must be deployed first. Please deploy your application and then re-run the custom chef recipes."
