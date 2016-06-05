@@ -58,16 +58,16 @@ node[:sphinx][:apps].each do |app_name|
     
       # configure thinking sphinx
       execute "configure sphinx" do 
-        command "cd #{current_path} && bundle exec rake ts:configure"
-        user node[:owner_name]
-        environment 'RAILS_ENV' => env
+        #command "cd #{current_path} && bundle exec rake ts:configure"
+        #user node[:owner_name]
+        #environment 'RAILS_ENV' => env
       end
     
       # index unless index already exists
       execute "indexing" do
-        command "cd #{current_path} && bundle exec rake ts:index"
-        user node[:owner_name]
-        environment 'RAILS_ENV' => env
+        #command "cd #{current_path} && bundle exec rake ts:index"
+        #user node[:owner_name]
+        #environment 'RAILS_ENV' => env
       end
     end
   else
