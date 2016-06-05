@@ -26,7 +26,7 @@ node[:sphinx][:apps].each do |app_name|
       })
     end
 
-    symlink config yml
+    #symlink config yml
     link "#{current_path}/config/thinking_sphinx.yml" do
       to "#{shared_path}/config/thinking_sphinx.yml"
     end
@@ -55,14 +55,14 @@ node[:sphinx][:apps].each do |app_name|
         action :install
         not_if "gem list | grep bundler"
       end
-
+    
       # configure thinking sphinx
       execute "configure sphinx" do 
         command "cd #{current_path} && bundle exec rake ts:configure"
         user node[:owner_name]
         environment 'RAILS_ENV' => env
       end
-
+    
       # index unless index already exists
       execute "indexing" do
         command "cd #{current_path} && bundle exec rake ts:index"
